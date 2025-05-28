@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+  <head>
+    <title> Sucess Page</title>
+  </head>
+  <body>
+    <div id="content">
+
+      <div data-th-replace="~{message::messagebox}"></div>
+      <a href="/login" class="bg-gray-900 mt-20 text-white px-3 py-2 rounded ">
+        Login </a>
+    </div>
+   
+
+    </footer>
+  </body>
+  <script>
+    console.log("Sucess Page");
+  </script>
+</html>

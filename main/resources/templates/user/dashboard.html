@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+  <head>
+    <title data-th-text="${loggedInUser.name}+'| SCM '">Dashboard Page</title>
+  </head>
+  <body>
+    <div id="content">
+      <div th:if="${loggedInUser}">
+
+        <div data-th-replace="~{user/sideBar :: sideBar}"></div>
+      </div>
+      <main class=" ml-30 flex-1 p-6 mt-20 text-center">
+        <h1 class="text-3xl font-bold">Welcome to Your Dashboard</h1>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">Manage your contacts
+          easily with Smart Contact Manager.</p>
+
+        <div class=" ml-32 grid md:grid-cols-3 gap-6 mt-6">
+          <div class="p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+            <h2 class="text-xl font-semibold">Total Contacts</h2>
+            <p
+              class="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              <span th:text="${totalSize}">0</span>
+            </p>
+          </div>
+          <div class="p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+            <h2 class="text-xl font-semibold">New Contacts</h2>
+            <p
+              class="text-2xl font-bold text-green-600 dark:text-green-400">
+              <span th:text="${newContactsCount}">
+                0
+              </span>
+            </p>
+          </div>
+          <div class="p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+            <h2 class="text-xl font-semibold">Recently Updated</h2>
+            <p
+              class="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
+              <span th:text="${recentlyUpdatedCount}">0</span>
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="ml-30 mt-10 bg-white dark:bg-gray-800 p-6 shadow-md rounded-lg">
+          <h2 class="text-2xl font-semibold">Recent Contacts</h2>
+
+          <table
+            class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+            data-th-if="${not #lists.isEmpty(recentContacts)}">
+            <thead
+              class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" class="px-6 py-3">
+
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Phone
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Favourite
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr
+                class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
+                data-th-object="${c}"
+                data-th-each="c : ${recentContacts}">
+                <td class="p-2">
+                  <div class="flex items-center">
+                    <img
+                      onerror="this.src='data:image/png;base64,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'"
+                      class="h-10 w-10 rounded-full" data-th-src="@{*{picture}}"
+                      alt="Jese image" />
+                  </td>
+                  <th scope="row"
+                    class="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+
+                    <div class="ps-3">
+                      <div class="text-base font-semibold"
+                        data-th-text="*{name}">Leslie Livingston</div>
+                      <div class="font-normal text-gray-500"
+                        data-th-text="*{email}">leslie@flowbite.com</div>
+                    </div>
+                  </th>
+                  <td class="px-6 py-4">
+                    <div class="text-base font-semibold"
+                      data-th-text="*{phoneNumber}">Leslie Livingston</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <div class="flex items-center">
+                      <div class="h-2.5 w-2.5 rounded-full bg-yellow-500 me-2"
+                        data-th-if="*{favourite}"></div> Favourite
+                    </div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <a data-th-href="@{'/user/contacts/edit/'+ *{id}}"
+                      class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit
+                      user</a>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+            <p class="text-gray-500"
+              data-th-if="${#lists.isEmpty(recentContacts)}">No recent contacts
+              found.</p>
+            <div data-th-replace="~{user/contactModal::contactModal}"></div>
+          </div>
+        </main>
+
+      </div>
+
+      <script data-th-src="@{/js/contact.js}">     
+        console.log("this is dashboard page ");
+    </script>
+    </body>
+  </html>

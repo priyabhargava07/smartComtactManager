@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en"
+    th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FeedBack Page </title>
+    </head>
+    <body>
+        <div id="content" class="m-auto flex-1 p-6 mt-20 text-center">
+            <div data-th-if="${loggedInUser}">
+                <div data-th-replace="~{user/sideBar :: sideBar}"></div>
+                <div
+                    class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg  max-w-md m-auto">
+                    <div data-th-replace="~{message::messagebox}"></div>
+                    <!-- Form Heading -->
+                    <h2
+                        class="text-xl font-semibold mb-4 text-gray-700 dark:text-gray-200 text-center">
+                        Feedback Form
+                    </h2>
+                    <!-- Feedback Form -->
+                    <form data-th-action="@{/feedback/submit}"
+                        method="post"
+                        data-th-object="${feedback}"
+                        class="space-y-4">
+                        <!-- Name Input -->
+                        <div>
+                            <label
+                                class="block text-gray-700 dark:text-gray-300">
+                                Name
+                            </label>
+                            <input
+                                type="text"
+                                data-th-field="*{name}"
+                                required
+                                class="w-full
+                                   px-3
+                                   py-2
+                                   border
+                                   rounded-md
+                                   bg-gray-50
+                                   dark:bg-gray-700
+                                   text-gray-900
+                                   dark:text-white
+                                   focus:outline-none
+                                   focus:ring
+                                   focus:ring-blue-300
+                                   dark:focus:ring-blue-600">
+                        </div>
+
+                        <!-- Email Input -->
+                        <div>
+                            <label
+                                class="block text-gray-700 dark:text-gray-300">
+                                Email
+                            </label>
+                            <input
+                                type="email"
+                                data-th-field="*{email}"
+                                required
+                                class="w-full
+                                   px-3
+                                   py-2
+                                   border
+                                   rounded-md
+                                   bg-gray-50
+                                   dark:bg-gray-700
+                                   text-gray-900
+                                   dark:text-white
+                                   focus:outline-none
+                                   focus:ring
+                                   focus:ring-blue-300
+                                   dark:focus:ring-blue-600">
+                        </div>
+
+                        <!-- Message Input -->
+                        <div>
+                            <label
+                                class="block text-gray-700 dark:text-gray-300">
+                                Message
+                            </label>
+                            <textarea data-th-field="*{message}"
+                                required
+                                class="w-full
+                                      px-3
+                                      py-2
+                                      border
+                                      rounded-md
+                                      bg-gray-50
+                                      dark:bg-gray-700
+                                      text-gray-900
+                                      dark:text-white
+                                      focus:outline-none
+                                      focus:ring
+                                      focus:ring-blue-300
+                                      dark:focus:ring-blue-600
+                                      h-24">
+
+                            </textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button
+                            type="submit"
+                            class="w-full
+                                bg-blue-500
+                                hover:bg-blue-600
+                                text-white py-2
+                                rounded-md
+                                transition
+                                dark:bg-blue-600
+                                dark:hover:bg-blue-700">
+                            Submit Feedback
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+    <script>
+        console.log("Hello from feedback page");
+    </script>
+</html>

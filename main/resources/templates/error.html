@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"
+    th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+    <head>
+        <title>Error Page</title>
+    </head>
+    <body>
+        <div id="content" class="m-30">
+
+            <div data-th-replace="~{message::messagebox}"> </div>
+            <a href="/login"
+                class="bg-gray-900  text-white px-3 py-2 rounded text-center m-20 ">Login</a>
+
+            <p data-th="${error}" class="text-red-700"></p>
+
+        </div>
+        <script>
+        console.log("Error Page");
+    </script>
+    </body>
+</html>

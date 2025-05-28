@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{})}">
+  <head>
+
+    <title>
+      Services
+    </title>
+  </head>
+  <body>
+    <div id="content">
+      <!-- Services Section -->
+      <section class="container mx-auto py-20 px-6">
+        <h2
+          class="text-4xl font-bold text-center text-gray-800 dark:text-white">Our
+          Services</h2>
+        <div class="mt-8 grid md:grid-cols-3 gap-8">
+          <div class="p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+            <h3 class="text-2xl font-semibold">📇 Contact Management</h3>
+            <p class="mt-4 text-gray-600 dark:text-gray-300">Easily add, edit,
+              and organize your contacts in one place.</p>
+          </div>
+          <div class="p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+            <h3 class="text-2xl font-semibold">☁️ Cloud Sync</h3>
+            <p class="mt-4 text-gray-600 dark:text-gray-300">Access your
+              contacts from any device, anytime, anywhere.</p>
+          </div>
+          <div class="p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+            <h3 class="text-2xl font-semibold">🔒 Secure & Private</h3>
+            <p class="mt-4 text-gray-600 dark:text-gray-300">We ensure your
+              contacts are encrypted and secure.</p>
+          </div>
+          <div class="p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+            <h3 class="text-2xl font-semibold">🔍 Smart Search</h3>
+            <p class="mt-4 text-gray-600 dark:text-gray-300">Find contacts
+              quickly with AI-powered search.</p>
+          </div>
+          <div class="p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+            <h3 class="text-2xl font-semibold">📲 Multi-Device Support</h3>
+            <p class="mt-4 text-gray-600 dark:text-gray-300">Seamless experience
+              on mobile, tablet, and desktop.</p>
+          </div>
+          <div class="p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg">
+            <h3 class="text-2xl font-semibold">🔗 Third-Party Integration</h3>
+            <p class="mt-4 text-gray-600 dark:text-gray-300">Sync contacts with
+              Google, Outlook, and CRM tools.</p>
+          </div>
+        </div>
+      </section>
+      <footer data-th-replace="~{footer::footer}">
+
+      </footer>
+    </div>
+
+  </body>
+</html>
